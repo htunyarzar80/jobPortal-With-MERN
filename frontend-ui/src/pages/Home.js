@@ -63,7 +63,7 @@ const Home = () => {
         <Container>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 2, md: 4 }}>
             <Box sx={{ flex: 2, p: 2, }}>
-              <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2,bgcolor: "#003366",border: 1.5 }}>
+              <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2,bgcolor: palette.primary.main,border: 1.5,color:palette.primary.oth }}>
                 <Box sx={{ pb: 2,borderColor: 'primary.main' }}>
                   <Typography component="h4" sx={{ color: palette.secondary.white, fontWeight: 600 }}>
                     Filter job by category
@@ -72,9 +72,9 @@ const Home = () => {
                 <SelectComponent handleChangeCategory={handleChangeCategory} cat={cat} />
               </Card>
 
-              <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2 ,bgcolor: "#003366",border: 1.5}}>
+              <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2 ,bgcolor:palette.primary.main,border: 1.5}}>
                 <Box sx={{ pb: 2 }}>
-                  <Typography component="h4" sx={{ color: palette.secondary.white, fontWeight: 600 }}>
+                  <Typography component="h4" sx={{ color: palette.secondary.oth, fontWeight: 600 }}>
                     Filter job by location
                   </Typography>
                   <MenuList>
@@ -84,7 +84,7 @@ const Home = () => {
                           <ListItemIcon>
                             <LocationOnIcon sx={{ color: palette.secondary.main, fontSize: 18 }} />
                           </ListItemIcon>
-                          <Link to={`/search/location/${location}`} className="text-white">{location}</Link>
+                          <Link to={`/search/location/${location}`} style={{color: palette.primary.oth}}>{location}</Link>
                         </MenuItem>
                       ))}
                   </MenuList>

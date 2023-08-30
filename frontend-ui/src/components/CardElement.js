@@ -26,11 +26,11 @@ const CardElement = ({
   const { palette } = useTheme();
   return (
     <Card
-      sx={{ minWidth: 275, mb: 3, mt: 3, bgcolor: "#003366", border: 1.5 }}
+      sx={{ minWidth: 275, mb: 3, mt: 3, bgcolor:palette.primary.main,color:palette.primary.oth, border: 1.5 }}
       className={classes.item}
     >
       <CardContent>
-        <Grid container sx={{ color: "#fff" }}>
+        <Grid container >
           <Grid item xs={2}>
             <Typography variant="h5" component="div">
               <img

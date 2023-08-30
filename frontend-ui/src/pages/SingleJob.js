@@ -51,7 +51,7 @@ const SingleJob = () => {
     <>
       <Meta title={"j4u -job details"} />
 
-      <Box sx={{ color: palette.background.default, marginTop: "65px" }}>
+      <Box sx={{ color: palette.primary.oth, bgcolor: palette.primary.main, marginTop: "65px" }}>
         <Navbar />
 
         <Box sx={{mb:3}}>
@@ -82,9 +82,9 @@ const SingleJob = () => {
               {loading ? (
                 <LoadingBox />
               ) : (
-                <Card sx={{ bgcolor: "#003366" }}>
+                <Card sx={{ color: palette.primary.oth, bgcolor: palette.primary.main, }}>
 
-                <Box sx={{border:1 ,color: palette.primary.text}}>
+                <Box sx={{border:1}}>
                 <div class="container p-4 wow jobDetails" data-wow-delay="0.1s">
                   <div class="container p-0 ">
                     <div class="row gy-5 gx-4 ">

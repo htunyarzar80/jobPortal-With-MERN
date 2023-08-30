@@ -36,12 +36,12 @@ const SingleCompany = () => {
     <>
       <Meta title={"j4u - company details"} />
 
-      <Box sx={{ color: palette.background.default }}>
+      <Box sx={{ color: palette.background.default,mb:3 ,p:0 }}>
         <Navbar />
 
-        <Box>
+        <Box sx={{ pt: 0}}>
           <Container sx={{ pt: "0" }}>
-            <Box sx={{ flex: 4, p: 4, color: palette.background.default }}>
+            <Box sx={{ flex: 4, p:4, color: palette.background.default }}>
               <section className="comDeatils my-5 p-0">
                 <div class="container py-5 bg-dark company-header ">
                   <div class="container my-5 pt-5 pb-5">
@@ -70,11 +70,10 @@ const SingleCompany = () => {
                 {loading ? (
                   <LoadingBox />
                 ) : (
-                  <Box sx={{ bgcolor: "#003366" }}>
+                  <Box sx={{ color: palette.primary.oth, bgcolor: palette.primary.main }}>
                     <Card
                       sx={{
-                        bgcolor: "#003366",
-                        color: palette.primary.text,
+                        color: palette.primary.oth, bgcolor: palette.primary.main,
                         border: 1,
                       }}
                     >
@@ -109,7 +108,7 @@ const SingleCompany = () => {
                                   {singleCompany && singleCompany.description}
                                 </p>
                               </div>
-                              <Box sx={{ bgcolor: "#003366" }}>
+                              <Box sx={{ color: palette.primary.oth, bgcolor: palette.primary.main }}>
                                 <div
                                   class="accordion rjob"
                                   id="accordionPanelsStayOpenExample"
@@ -137,7 +136,7 @@ const SingleCompany = () => {
                                     >
                                       <div
                                         class="accordion-body"
-                                        style={{ backgroundColor: "#003366" }}
+                                        style={{ color: palette.primary.oth, bgcolor: palette.primary.main }}
                                       >
                                         <Container>
                                           <Stack
@@ -209,24 +208,21 @@ const SingleCompany = () => {
                             </div>
 
                             <Card
-                              sx={{ bgcolor: "#003366" }}
+                              sx={{ color: palette.primary.oth, bgcolor: palette.primary.main }}
                               class="container-card col-lg-4 com"
                             >
                               <div
-                                class=" rounded  mb-4 wow slideInUp text-white"
+                                class=" rounded  mb-4 wow slideInUp "
                                 data-wow-delay="0.1s"
                               >
-                                <Card
-                                  header
-                                  sx={{ bgcolor: "#2d2d2d", color: "#fff" }}
-                                >
+                               
                                   <h4 class="p-3 text-center ">
                                     Company Summery
                                   </h4>
-                                </Card>
+                                
                                 <Card
                                   content
-                                  sx={{ bgcolor: "#003366", color: "#fff" }}
+                                  sx={{ color: palette.primary.oth, bgcolor: palette.primary.main}}
                                 >
                                   <p>
                                     <i class="fa fa-angle-right  me-2"></i>
@@ -268,9 +264,11 @@ const SingleCompany = () => {
               </section>
             </Box>
           </Container>
-          <Footer />
+         
         </Box>
+        
       </Box>
+      <Footer />
     </>
   );
 };

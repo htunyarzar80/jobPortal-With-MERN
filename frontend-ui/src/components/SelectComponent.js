@@ -16,7 +16,7 @@ const SelectComponent = ({ handleChangeCategory, cat }) => {
     return (
         <Box sx={{ minWidth: 120 ,borderColor: "#eee" }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" className='text-white'>Category</InputLabel>
+                <InputLabel id="demo-simple-select-label"sx={{color: palette.primary.oth}}>Category</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -25,10 +25,10 @@ const SelectComponent = ({ handleChangeCategory, cat }) => {
                     onChange={handleChangeCategory}
                     sx={{border: 1.5}}
                 >
-                    <MenuItem value="">All</MenuItem>
+                    <MenuItem value="" sx={{color: "blue"}}>All</MenuItem>
                     {
                         jobType && jobType.map(jt => (
-                            <MenuItem key={jt._id} value={jt._id} sx={{color: "primary",bgcolor:"#003366"}}>{jt.jobTypeName}</MenuItem>
+                            <MenuItem key={jt._id} value={jt._id} sx={{color: "blue",bgcolor:palette.primary.oth}}>{jt.jobTypeName}</MenuItem>
                         ))
                     }
 

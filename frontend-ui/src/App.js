@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './pages/Home';

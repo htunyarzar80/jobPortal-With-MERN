@@ -45,7 +45,7 @@ const Company = () => {
     <>
       <Meta title={"J4U - Companies"} />
       <ComHeader />
-      <Box sx={{ color: palette.background.default, minHeight: "100vh" }}>
+      <Box sx={{ color: palette.primary.oth, bgcolor: palette.primary.main, minHeight: "100vh" }}>
         <Typography
           variant="h5"
           sx={{ color: "dark", justifyContent: "center" }}
@@ -66,18 +66,18 @@ const Company = () => {
                   mb: 3,
                   mt: 3,
                   p: 2,
-                  bgcolor: "#003366",
+                  color: palette.primary.oth, bgcolor: palette.primary.main,
                   border: 1.5,
                 }}
               >
                 <Box sx={{ pb: 2 }}>
                   <Typography
                     component="h4"
-                    sx={{ color: palette.secondary.white, fontWeight: 600 }}
+                    sx={{ color: palette.primary.oth, bgcolor: palette.primary.main, fontWeight: 600 }}
                   >
                     Find company by location
                   </Typography>
-                  <MenuList>
+                  <MenuList sx={{color: palette.primary.oth, bgcolor: palette.primary.main}}>
                     {setUniqueLocation &&
                       setUniqueLocation.map((location, i) => (
                         <MenuItem key={i}>
@@ -89,7 +89,7 @@ const Company = () => {
                               }}
                             />
                           </ListItemIcon>
-                          <Link to={`/${location}`} className="text-white">
+                          <Link to={`/${location}`} >
                             {location}
                           </Link>
                         </MenuItem>
@@ -109,7 +109,7 @@ const Company = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      color: "#fff",
+                      color: palette.primary.oth, bgcolor: palette.primary.main
                     }}
                   >
                     <h2>No result found!</h2>

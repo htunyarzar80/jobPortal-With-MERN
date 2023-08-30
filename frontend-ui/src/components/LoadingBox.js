@@ -1,7 +1,11 @@
 import { Box, CircularProgress } from '@mui/material'
 import React from 'react'
+import { useTheme } from '@emotion/react';
+
 
 const LoadingBox = () => {
+    const { palette } = useTheme();
+
     return (
         <>
             <Box
@@ -10,9 +14,10 @@ const LoadingBox = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bgcolor: "#003366",
+                    bgcolor: palette.primary.main,
+                    color: palette.primary.oth
                 }}>
-                <CircularProgress className='text-white' />
+                <CircularProgress style={{color: palette.primary.oth}} />
             </Box>
         </>
     )

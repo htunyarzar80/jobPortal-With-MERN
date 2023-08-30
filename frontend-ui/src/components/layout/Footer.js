@@ -16,7 +16,7 @@ const Footer = () => {
           border: 1,
         }}
       >
-        <Box component="span" sx={{ color: palette.primary.text }}>
+        <Box component="span" sx={{ color: palette.primary.text,pb:0 }}>
           All rights reserved! 2023.
         </Box>
       </Box>

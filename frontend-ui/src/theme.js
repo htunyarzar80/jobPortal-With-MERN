@@ -26,7 +26,8 @@ export const themeColors = (mode) => ({
                     text: "#fff",
                     icon:"#fff",
                     // nav:"#53B982"
-                    nav:"#fff"
+                    nav:"#fff",
+                    oth:"#fff"
                 },
                 secondary: {
                     main: lightBlue[800],
@@ -50,7 +51,8 @@ export const themeColors = (mode) => ({
                     white: "#003366",
                     text: "#fff",
                     icon:"#2d2d2d",
-                    nav:"#003366"
+                    nav:"#003366",
+                    oth:"#2d2d2d"
 
 
                 },
