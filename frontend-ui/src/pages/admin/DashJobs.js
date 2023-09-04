@@ -9,6 +9,8 @@ import { jobLoadAction } from "../../redux/actions/jobAction";
 import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import Meta from "../Meta";
+import DashCreateJob from "./DashCreateJob";
+import DashUpdateJob from "./DashUpdateJob";
 
 const DashJobs = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,10 @@ const DashJobs = () => {
 
   let data = [];
   data = jobs !== undefined && jobs.length > 0 ? jobs : [];
+  const numberedData = data.map((row, index) => ({
+    number: index + 1,
+    ...row,
+  }));
 
   console.log(data);
   //delete job by Id
@@ -29,7 +35,12 @@ const DashJobs = () => {
   };
 
   const columns = [
-    
+    {
+      field: "number",
+      headerName: "No",
+      width: 60,
+    },
+
     {
       field: "title",
       headerName: "Title",
@@ -71,7 +82,7 @@ const DashJobs = () => {
     {
       field: "Actions",
       width: 200,
-      renderCell: (values) => (
+      renderCell: (params) => (
         <Box
           sx={{
             display: "flex",
@@ -79,16 +90,17 @@ const DashJobs = () => {
             width: "170px",
           }}
         >
-          <Button variant="contained">
-            <Link
-              style={{ color: "dark", textDecoration: "none" }}
-              to={`/admin/job/edit/${values.row._id}`}
-            >
-              {<EditNoteRoundedIcon />}
-            </Link>
-          </Button>
+          <DashUpdateJob
+            id={params.row?._id}
+            title={params.row?.title}
+            type={params.row.jobType?.jobTypeName} // Access nested property
+            company={params.row.company?.companyName} // Access nested property
+            salary={params.row?.salary}
+            location={params.row?.location}
+            description={params.row?.description}
+          />
           <Button
-            onClick={(e) => deleteJobById(e, values.row._id)}
+            onClick={(e) => deleteJobById(e, params.row._id)}
             variant="contained"
             color="error"
           >
@@ -101,20 +113,12 @@ const DashJobs = () => {
 
   return (
     <Box>
-      <Meta title={"dash jobs"}/>
+      <Meta title={"dash jobs"} />
       <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
         Jobs list
       </Typography>
       <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-        <Button variant="contained" color="success" startIcon={<AddIcon />}>
-          {" "}
-          <Link
-            style={{ color: "white", textDecoration: "none" }}
-            to="/admin/job/create"
-          >
-            Create Job
-          </Link>
-        </Button>
+        <DashCreateJob />
       </Box>
       <Paper sx={{ bgcolor: "secondary.midNightBlue" }}>
         <Box sx={{ height: 400, width: "100%" }}>
@@ -134,7 +138,7 @@ const DashJobs = () => {
                 color: "#ffffff",
               },
             }}
-            rows={data}
+            rows={numberedData}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}

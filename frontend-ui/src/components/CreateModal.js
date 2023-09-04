@@ -153,7 +153,7 @@ export default function CreateModal() {
 
               <Grid item sx={6} >
                 <TextField
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3 ,fieldset: { borderColor: "#eee" }}}
                   fullWidth
                   id="companyName"
                   label="Company Name"
@@ -176,7 +176,7 @@ export default function CreateModal() {
               </Grid>
               <Grid item sx={6} >
                 <TextField
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3,fieldset: { borderColor: "#eee" } }}
                   fullWidth
                   id="description"
                   name="description"
@@ -200,7 +200,7 @@ export default function CreateModal() {
               </Grid>
               <Grid item sx={12} >
                 <TextField
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3 ,fieldset: { borderColor: "#eee" }}}
                   fullWidth
                   id="companyPhone"
                   name="companyPhone"
@@ -225,7 +225,7 @@ export default function CreateModal() {
 
               <Grid item sx={12}>
                 <TextField
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3 ,fieldset: { borderColor: "#eee" },}}
                   fullWidth
                   id="companyEmail"
                   name="companyEmail"
@@ -250,7 +250,7 @@ export default function CreateModal() {
 
               <Grid item sx={12}>
                 <TextField
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3,fieldset: { borderColor: "#eee" }, }}
                   fullWidth
                   id="location"
                   name="location"

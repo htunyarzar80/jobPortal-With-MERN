@@ -24,8 +24,10 @@ import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 
 import moment from "moment";
 import Meta from "../Meta";
+import DashUpdateCategoryModal from "./DashUpdateCategoryModal";
+// import DashUsers from "./DashUsers";
 
-const DashCategory = () => {
+const DashCategory = (params) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedJobTypeId, setSelectedJobTypeId] = useState(null);
 
@@ -33,11 +35,15 @@ const DashCategory = () => {
 
   useEffect(() => {
     dispatch(jobTypeLoadAction());
-  }, []);
+  }, [dispatch]);
 
   const { jobType, loading } = useSelector((state) => state.jobTypeAll);
   let data = [];
   data = jobType !== undefined && jobType.length > 0 ? jobType : [];
+  const numberedData = data.map((row, index) => ({
+    number: index + 1,
+    ...row,
+  }));
 
   const handleDeleteConfirmation = (e, type_id) => {
     e.preventDefault();
@@ -59,6 +65,11 @@ const DashCategory = () => {
 
   const columns = [
     {
+      field: "number",
+      headerName: "No",
+      width: 60,
+    },
+    {
       field: "jobTypeName",
       headerName: "Category",
       width: 200,
@@ -74,7 +85,7 @@ const DashCategory = () => {
     {
       field: "Actions",
       width: 200,
-      renderCell: (values) => (
+      renderCell: (params) => (
         <Box
           sx={{
             display: "flex",
@@ -82,16 +93,10 @@ const DashCategory = () => {
             width: "170px",
           }}
         >
-          <Button variant="contained">
-            <Link
-              style={{ color: "dark", textDecoration: "none" }}
-              to={`/admin/edit/user/${values.row._id}`}
-            >
-              {<EditNoteRoundedIcon />}
-            </Link>
-          </Button>
+        <DashUpdateCategoryModal id={params.row._id} initialText={params.row?.jobTypeName} />
+
           <Button
-            onClick={(e) => handleDeleteConfirmation(e, values.row._id)}
+            onClick={(e) => handleDeleteConfirmation(e, params.row._id)}
             variant="contained"
             color="error"
           >
@@ -138,7 +143,7 @@ const DashCategory = () => {
                 color: "#ffffff",
               },
             }}
-            rows={data}
+            rows={numberedData}
             columns={columns}
             pageSize={3}
             rowsPerPageOptions={[3]}

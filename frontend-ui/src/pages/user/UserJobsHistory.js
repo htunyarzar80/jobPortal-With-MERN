@@ -13,9 +13,18 @@ const UserJobsHistory = () => {
   // Check if user.jobsHistory exists and has items, otherwise, set an empty array
   let data = user?.jobsHistory !== undefined && user?.jobsHistory.length > 0 ? user.jobsHistory : [];
   console.log(data)
+  const numberedData = data.map((row, index) => ({
+    number: index + 1,
+    ...row,
+  }));
 
   // Define the columns for the DataGrid
   const columns = [
+    {
+      field: "number",
+      headerName: "No",
+      width: 60,
+    },
     {
       field: "title",
       headerName: "Title",
@@ -31,13 +40,13 @@ const UserJobsHistory = () => {
       field: "jobType",
       headerName: "Category",
       width: 150,
-      valueGetter: (params) => params.row.jobType.jobTypeName, 
+      valueGetter: (params) => params.row.jobType, 
     },
     {
       field: "company",
       headerName: "Company ",
       width: 150,
-      valueGetter: (params) => params.row.company.companyName,
+      valueGetter: (params) => params.row.company,
     },
     {
       field: "salary",
@@ -72,7 +81,7 @@ const UserJobsHistory = () => {
                 color: "#ffffff",
               },
             }}
-            rows={data} 
+            rows={numberedData} 
             columns={columns} 
             pageSize={5} 
             rowsPerPageOptions={[5]} 

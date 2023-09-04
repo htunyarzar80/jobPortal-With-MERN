@@ -1,5 +1,5 @@
-import { Box, Grid, MenuItem, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import { Box, Dialog, Grid, MenuItem, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useFormik } from "formik";
@@ -25,6 +25,8 @@ const validationSchema = yup.object({
 const DashCreateJob = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [openDialog, setOpenDialog] = useState(false);
+
 
   //job type
   useEffect(() => {
@@ -34,6 +36,14 @@ const DashCreateJob = () => {
 
   const { jobType } = useSelector((state) => state.jobTypeAll);
   const { companies } = useSelector((state) => state.loadCompanies);
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -50,17 +60,28 @@ const DashCreateJob = () => {
       // alert(JSON.stringify(values, null, 2));
       actions.resetForm();
       navigate("/admin/jobs");
+      handleCloseDialog(); 
+
     },
   });
 
   return (
+    <><Button variant="contained" onClick={handleOpenDialog}>
+   Create Job
+  </Button>
+
+  <Dialog
+    open={openDialog}
+    onClose={handleCloseDialog}
+    sx={{ color: "#2d2d2d" }}
+  >
     <Box
     sx={{
       height: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      pt: 4,
+      
     }}
   >
     <Box
@@ -214,6 +235,8 @@ const DashCreateJob = () => {
         </Button>
       </Box>
     </Box>
+    </Dialog>
+    </>
   );
 };
 

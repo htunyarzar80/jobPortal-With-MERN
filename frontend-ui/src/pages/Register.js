@@ -60,14 +60,14 @@ const Register = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: palette.background.default,
+          color: palette.primary.oth, bgcolor: palette.primary.main
         }}
       >
         <Box
           onSubmit={formik.handleSubmit}
           component="form"
           className="auth_style border-style"
-          sx={{ bgcolor: "#003366", color: palette.primary.text }}
+          sx={{ bgcolor: "#eee"}}
         >
           <Box
             sx={{
@@ -77,16 +77,16 @@ const Register = () => {
               width: "100%",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "primary.white", mb: 3 }}>
+            <Avatar sx={{ m: 1, bgcolor: "#003366",color:"#fff", mb: 3 }}>
               <LockOpenIcon />
             </Avatar>
             <TextField
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366",
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="firstName"
@@ -108,9 +108,9 @@ const Register = () => {
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366",
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="lastName"
@@ -130,9 +130,9 @@ const Register = () => {
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366"
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="email"
@@ -152,9 +152,9 @@ const Register = () => {
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366"
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="password"

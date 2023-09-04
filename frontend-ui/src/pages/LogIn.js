@@ -68,15 +68,14 @@ const LogIn = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: palette.background.default,
-          color: palette.primary.text,
+          color: palette.primary.oth, bgcolor: palette.primary.main
         }}
       >
         <Box
           onSubmit={formik.handleSubmit}
           component="form"
           className="auth_style border-style"
-          sx={{ bgcolor: "#003366", color: palette.primary.text }}
+          sx={{ bgcolor: "#eee",color:"#003366" }}
         >
           <Box
             sx={{
@@ -93,9 +92,9 @@ const LogIn = () => {
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366",
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="email"
@@ -115,9 +114,9 @@ const LogIn = () => {
               sx={{
                 mb: 3,
                 "& .MuiInputBase-root": {
-                  color: palette.primary.text,
+                  color: "#003366",
                 },
-                fieldset: { borderColor: "rgb(231, 235, 240)" },
+                fieldset: { borderColor: "#2d2d2d" },
               }}
               fullWidth
               id="password"

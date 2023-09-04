@@ -9,7 +9,10 @@ import {
     DELETE_JOB_TYPE_SUCCESS,
     JOB_TYPE_LOAD_FAIL,
     JOB_TYPE_LOAD_REQUEST,
-    JOB_TYPE_LOAD_SUCCESS
+    JOB_TYPE_LOAD_SUCCESS,
+    UPDATE_JOB_TYPE_FAIL,
+    UPDATE_JOB_TYPE_REQUEST,
+    UPDATE_JOB_TYPE_SUCCESS
 } from '../constants/jobTypeConstant';
 
 
@@ -44,8 +47,7 @@ export const createJobTypeAction = (jobtype) => async (dispatch) => {
             payload: data.jobT
         })
         toast.success("Job type created successfully");
-
-
+        dispatch(jobTypeLoadAction());
     } catch (error) {
         dispatch({
             type: CREATE_JOB_TYPE_FAIL,
@@ -56,6 +58,30 @@ export const createJobTypeAction = (jobtype) => async (dispatch) => {
 
     }
 }
+
+
+//UpdateById
+export const jobTypeUpdateAction = (id, updatedJobType) => async (dispatch) => {
+    dispatch({ type: UPDATE_JOB_TYPE_REQUEST });
+    const url = `/api/type/update/${id}`;
+    try {
+      const { data } = await axios.put(url, updatedJobType);
+      console.log("data", data);
+      dispatch({
+        type: UPDATE_JOB_TYPE_SUCCESS,
+        payload: data,
+      });
+      console.log("updated Data====>",data)
+      toast.success("Successfully Updated");
+      dispatch(jobTypeLoadAction());
+    } catch (error) {
+      dispatch({
+        type: UPDATE_JOB_TYPE_FAIL,
+        payload: error.response.data.error,
+      });
+    }
+  };
+
 export const deleteJobTypeAction = (id) => async (dispatch) => {
     dispatch({ type: DELETE_JOB_TYPE_REQUEST });
 

@@ -86,6 +86,7 @@ export const jobUpdateAction = (id,updatedJobData) => async (dispatch) => {
             payload: data
         });
         toast.success("Successfully Updated")
+        dispatch(jobLoadAction())
     } catch (error) {
         dispatch({
             type: UPDATE_JOB_FAIL,
@@ -106,6 +107,7 @@ export const registerAjobAction = (job) => async (dispatch) => {
             payload: data
         })
         toast.success("Job created successfully");
+        dispatch(jobLoadAction())
 
 
     } catch (error) {

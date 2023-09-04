@@ -137,7 +137,7 @@ console.log("user",user)
               </Box>
               ) : (
                 <MenuItem >
-                  <Typography
+                  {/* <Typography
                     style={{
                       textDecoration: "none",
                       color: palette.secondary.main,
@@ -145,7 +145,7 @@ console.log("user",user)
                     textAlign="center"
                   >
                     Log Out
-                  </Typography>
+                  </Typography> */}
                 </MenuItem>
               )}
 

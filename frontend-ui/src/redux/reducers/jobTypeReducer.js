@@ -9,6 +9,10 @@ import {
   JOB_TYPE_LOAD_REQUEST,
   JOB_TYPE_LOAD_RESET,
   JOB_TYPE_LOAD_SUCCESS,
+  UPDATE_JOB_TYPE_FAIL,
+  UPDATE_JOB_TYPE_REQUEST,
+  UPDATE_JOB_TYPE_RESET,
+  UPDATE_JOB_TYPE_SUCCESS,
 } from "../constants/jobTypeConstant";
 
  let initialState = []
@@ -68,6 +72,21 @@ export const deleteJobTypeReducer = (state =initialState= { jobType: [] }, actio
         ...state,
         jobType: updatedJobTypes,
       };
+    default:
+      return state;
+  }
+};
+//Update
+export const jobTypeUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_JOB_TYPE_REQUEST:
+      return { loading: true };
+    case UPDATE_JOB_TYPE_SUCCESS:
+      return { loading: false, success: true, jobType: action.payload };
+    case UPDATE_JOB_TYPE_FAIL:
+      return { loading: false, error: action.payload };
+    case UPDATE_JOB_TYPE_RESET:
+      return {};
     default:
       return state;
   }

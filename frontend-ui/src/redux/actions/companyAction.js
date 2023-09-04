@@ -98,6 +98,8 @@ export const companyUpdateAction = (id,updatedCompanyData) => async (dispatch) =
             payload: data
         });
         toast.success("Successfully Updated")
+        dispatch(companyLoadAction())
+
     } catch (error) {
         dispatch({
             type: UPDATE_COMPANY_FAIL,

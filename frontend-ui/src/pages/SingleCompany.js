@@ -36,12 +36,13 @@ const SingleCompany = () => {
     <>
       <Meta title={"j4u - company details"} />
 
-      <Box sx={{ color: palette.background.default,mb:3 ,p:0 }}>
+      <Box sx={{ color: palette.primary.oth, bgcolor: palette.primary.main,minHeight: "88vh" }}>
+
         <Navbar />
 
         <Box sx={{ pt: 0}}>
-          <Container sx={{ pt: "0" }}>
-            <Box sx={{ flex: 4, p:4, color: palette.background.default }}>
+          <Container >
+            {/* <Box sx={{ flex: 4, p:4, color: palette.background.default }}> */}
               <section className="comDeatils my-5 p-0">
                 <div class="container py-5 bg-dark company-header ">
                   <div class="container my-5 pt-5 pb-5">
@@ -209,7 +210,7 @@ const SingleCompany = () => {
 
                             <Card
                               sx={{ color: palette.primary.oth, bgcolor: palette.primary.main }}
-                              class="container-card col-lg-4 com"
+                              class="container-card col-lg-4 "
                             >
                               <div
                                 class=" rounded  mb-4 wow slideInUp "
@@ -262,11 +263,11 @@ const SingleCompany = () => {
                   </Box>
                 )}
               </section>
-            </Box>
+            {/* </Box> */}
           </Container>
-         
+          
         </Box>
-        
+       
       </Box>
       <Footer />
     </>

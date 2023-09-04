@@ -20,13 +20,23 @@ const DashUsers = () => {
   const { users, loading } = useSelector((state) => state.allUsers);
   let data = [];
   data = users !== undefined && users.length > 0 ? users : [];
+  const numberedData = data.map((row, index) => ({
+    number: index + 1,
+    ...row,
+  }));
 
   const deleteUserById = (e, id) => {
     console.log(id);
   };
 
   const columns = [
+    {
+      field: "number",
+      headerName: "No",
+      width: 60,
+    },
     // {
+
     //     field: 'firstname',
     //     headerName: 'Name',
     //     width: 100,
@@ -122,7 +132,7 @@ const DashUsers = () => {
                 },
               }}
               getRowId={(row) => row._id}
-              rows={data}
+              rows={numberedData}
               columns={columns}
               pageSize={3}
               rowsPerPageOptions={[3]}

@@ -1,20 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Box, Paper, Typography, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material";
+import {
+  Box,
+  Paper,
+  Typography,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "@mui/material";
 import { DataGrid, GridToolbar, gridClasses } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import { companyLoadAction, deleteCompanyAction } from "../../redux/actions/companyAction";
+import {
+  companyLoadAction,
+  deleteCompanyAction,
+} from "../../redux/actions/companyAction";
 // import CreateModal from "../../components/CreateModal";
 import Meta from "../Meta";
+import CreateModal from "../../components/CreateModal";
+import DashUpdateCompany from "./DashUpdateCompany";
 
 // import {
 //   Button
 // } from "@nextui-org/react";
 
-const DashCompanies = () => {
+const DashCompanies = (params) => {
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedCompanyId, setSelectedCompanyId] = useState(null);
@@ -27,6 +42,10 @@ const DashCompanies = () => {
   // console.log(companies);
   let data = [];
   data = companies !== undefined && companies.length > 0 ? companies : [];
+  const numberedData = data.map((row, index) => ({
+    number: index + 1,
+    ...row,
+  }));
 
   const handleDeleteConfirmation = (e, company_id) => {
     e.preventDefault();
@@ -47,9 +66,13 @@ const DashCompanies = () => {
     setSelectedCompanyId(null);
   };
   //delete job by Id
-  
 
   const columns = [
+    {
+      field: "number",
+      headerName: "No",
+      width: 60,
+    },
     {
       field: "companyLogo",
       headerName: "Logo",
@@ -89,7 +112,7 @@ const DashCompanies = () => {
     {
       field: "Actions",
       width: 200,
-      renderCell: (values) => (
+      renderCell: (params) => (
         <Box
           sx={{
             display: "flex",
@@ -97,18 +120,21 @@ const DashCompanies = () => {
             width: "170px",
           }}
         >
-          <Button variant="contained">
-            <Link
-              style={{ color: "dark", textDecoration: "none" }}
-              to={`/admin/company/edit/${values.row._id}`}
-            >
-              {<EditNoteRoundedIcon />}
-            </Link>
-          </Button>
-          
+          <DashUpdateCompany
+            id={params.row._id}
+            name={params.row?.companyName}
+            companyLogo={params.row?.companyLogo}
+            description={params.row?.description}
+            location={params.row?.location}
+            companyEmail={params.row?.companyEmail}
+            companyPhone={params.row?.companyPhone}
+          />
+
           <Button
-           onClick={(e) => handleDeleteConfirmation(e, values.row._id)}
-           variant="contained" color="error">
+            onClick={(e) => handleDeleteConfirmation(e, params.row._id)}
+            variant="contained"
+            color="error"
+          >
             {<DeleteForeverRoundedIcon />}
           </Button>
         </Box>
@@ -118,14 +144,14 @@ const DashCompanies = () => {
 
   return (
     <>
-              <Meta title={"j4u - dash companies"} />
+      <Meta title={"j4u - dash companies"} />
 
       <Box>
         <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
           Companies list
         </Typography>
         <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-          {/* <CreateModal /> */}
+          <CreateModal />
 
           {/* <Button auto ghost color="error" onClick={handler}>
   Create{<AddIcon />}
@@ -150,7 +176,7 @@ const DashCompanies = () => {
                   color: "#ffffff",
                 },
               }}
-              rows={data}
+              rows={numberedData}
               columns={columns}
               pageSize={5}
               rowsPerPageOptions={[5]}
@@ -158,25 +184,35 @@ const DashCompanies = () => {
             />
           </Box>
         </Paper>
-        <Dialog open={openDialog} onClose={handleCloseDialog} >
-        <DialogTitle className='text-center' sx={{bgcolor:"#2d2d2d",justifyContent:"center",alignItems: "center" }}>Delete Company</DialogTitle>
-        <DialogContent sx={{bgcolor:"#003366"}}>
-          <DialogContentText>
-            Are you sure you want to delete ?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions sx={{bgcolor:"#003366"}}>
-          <Button onClick={handleCloseDialog}           sx={{bgcolor:"#eee"}}
->Cancel</Button>
-          <Button
-            onClick={handleDeleteCompany}
-            variant="contained"
-            color="error"
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <DialogTitle
+            className="text-center"
+            sx={{
+              bgcolor: "#2d2d2d",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Confirm 
-          </Button>
-        </DialogActions>
-      </Dialog>
+            Delete Company
+          </DialogTitle>
+          <DialogContent sx={{ bgcolor: "#003366" }}>
+            <DialogContentText>
+              Are you sure you want to delete ?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions sx={{ bgcolor: "#003366" }}>
+            <Button onClick={handleCloseDialog} sx={{ bgcolor: "#eee" }}>
+              Cancel
+            </Button>
+            <Button
+              onClick={handleDeleteCompany}
+              variant="contained"
+              color="error"
+            >
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </>
   );

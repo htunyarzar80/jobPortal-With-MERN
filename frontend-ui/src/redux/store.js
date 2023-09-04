@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { jobByCompanyIdReducer, jobUpdateReducer, loadJobReducer, loadJobSingleReducer, registerAjobReducer } from './reducers/jobReducer';
-import { createJobTypeReducer, deleteJobTypeReducer, loadJobTypeReducer } from './reducers/jobTypeReducer';
+import { createJobTypeReducer, deleteJobTypeReducer, jobTypeUpdateReducer, loadJobTypeReducer } from './reducers/jobTypeReducer';
 import { allUserReducer, userApplyJobReducer, userReducerLogout, userReducerProfile, userReducerSignIn } from './reducers/userReducer';
 import { modeReducer } from './reducers/themeModeReducer';
 import { companyUpdateReducer, createCompanyReducer, deleteCompanyReducer, loadCompanyReducer, singleCompanyReducer } from './reducers/companyReducer';
@@ -27,7 +27,8 @@ const reducer = combineReducers({
     createCompany:createCompanyReducer,
     deleteCompany:deleteCompanyReducer,
     jobUpdate:jobUpdateReducer,
-    companyUpadte:companyUpdateReducer
+    companyUpadte:companyUpdateReducer,
+    jobTypeUpdate:jobTypeUpdateReducer
 
 });
 
