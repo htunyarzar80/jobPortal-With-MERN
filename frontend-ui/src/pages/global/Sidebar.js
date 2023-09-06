@@ -33,7 +33,7 @@ const SidebarAdm = () => {
         dispatch(userLogoutAction());
         window.location.reload(true);
         setTimeout(() => {
-            navigate('/');
+            navigate('/home');
         }, 500)
     }
 

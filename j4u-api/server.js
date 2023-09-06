@@ -75,7 +75,7 @@ app.use("/api", companyRoute);
 app.use(errorHandler);
 
 //port
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8989;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

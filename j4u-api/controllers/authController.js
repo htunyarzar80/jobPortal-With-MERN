@@ -1,4 +1,5 @@
 
+const { token } = require('morgan');
 const User = require('../models/userModel');
 const ErrorResponse = require('../utils/errorResponse');
 
@@ -45,6 +46,7 @@ exports.signin = async (req, res, next) => {
         }
 
         sendTokenResponse(user, 200, res);
+        
 
     } catch (error) {
         next(error);
@@ -60,6 +62,7 @@ const sendTokenResponse = async (user, codeStatus, res) => {
             success: true,
             role: user.role
         })
+        // console.log(token)
 }
 
 
